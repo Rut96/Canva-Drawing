@@ -1,0 +1,233 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(./assets/images/draw-back.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 95%;
+    height: 60vh;
+    padding: 20px;
+}
+
+.pick-colors {
+    width: 180px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 40px);
+}
+
+.addColor, .clearColors {
+    width: 100%;
+    padding: 12px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.addColor {
+    background-color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.addColor:hover {
+    background-color: #45a049;
+}
+
+.clearColors {
+    background-color: #f44336;
+    margin-top: 15px;
+}
+
+.clearColors:hover {
+    background-color: #d32f2f;
+}
+
+.colorBox-wrap {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#colorsBox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-height: 100%;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+#colorsBox::-webkit-scrollbar {
+    width: 5px;
+}
+
+#colorsBox::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+}
+
+.color {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color:hover {
+    transform: scale(1.1);
+}
+
+.canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+#myCanvas {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.canvas-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.canvas-buttons button {
+    padding: 15px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    flex-grow: 1;
+    margin: 0 5px;
+}
+
+.canvas-buttons button:hover {
+    background-color: #45a049;
+}
+
+.brushes {
+    width: 120px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.thickNess {
+    width: 100%;
+    height: 40px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative;
+    transition: background-color 0.3s;
+    overflow: hidden;
+}
+
+.thickNess:hover {
+    background-color: #e9ecef;
+}
+
+.thickNess::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    background-color: #333;
+    border-radius: 2px;
+}
+
+.thickNess[onclick="changeThickness(1)"]::after { height: 1px; }
+.thickNess[onclick="changeThickness(2)"]::after { height: 2px; }
+.thickNess[onclick="changeThickness(4)"]::after { height: 4px; }
+.thickNess[onclick="changeThickness(6)"]::after { height: 6px; }
+.thickNess[onclick="changeThickness(8)"]::after { height: 8px; }
+.thickNess[onclick="changeThickness(10)"]::after { height: 10px; }
+.thickNess[onclick="changeThickness(12)"]::after { height: 12px; }
+.thickNess[onclick="changeThickness(14)"]::after { height: 14px; }
+.thickNess[onclick="changeThickness(16)"]::after { height: 16px; }
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        height: auto;
+    }
+
+    .pick-colors, .brushes {
+        width: 100%;
+        max-width: 300px;
+        margin: 10px 0;
+        height: auto;
+    }
+
+    .pick-colors {
+        height: auto;
+        max-height: 300px;
+    }
+
+    #colorsBox {
+        grid-template-columns: repeat(6, 1fr);
+        height: 200px;
+    }
+
+    #myCanvas {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+    }
+
+    .brushes {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .thickNess {
+        width: calc(25% - 10px);
+        margin: 5px;
+    }
+}

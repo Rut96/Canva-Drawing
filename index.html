@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="main.js"></script>
+</head>
+<body onload="loadColors()">
+    <div class="container">
+        <div class="pick-colors">
+            <button class="addColor" onclick="addRandomColor()">Add Color</button>
+            <div class="colorBox-wrap">
+                <div id="colorsBox"></div>
+            </div>
+            <button class="clearColors" onclick="clearColors()">Clear Colors</button>
+
+        </div>
+        <div class="canvas-container">
+            <canvas id="myCanvas" width="600" height="400"
+                onmouseenter="mark(event)"
+                onmousedown="mark(event)"
+                onmousemove="paint(event)">
+            </canvas>
+            <div class="canvas-buttons">
+                <button onclick="clearCanvas()">Clear Canvas</button>
+                <button onclick="randomLetter()">Random Letter</button>
+            </div>
+        </div>
+        <div class="brushes">
+            <div class="thickNess" onclick="changeThickness(1)"></div>
+            <div class="thickNess" onclick="changeThickness(2)"></div>
+            <div class="thickNess" onclick="changeThickness(4)"></div>
+            <div class="thickNess" onclick="changeThickness(6)"></div>
+            <div class="thickNess" onclick="changeThickness(8)"></div>
+            <div class="thickNess" onclick="changeThickness(10)"></div>
+            <div class="thickNess" onclick="changeThickness(12)"></div>
+            <div class="thickNess" onclick="changeThickness(14)"></div>
+            <div class="thickNess" onclick="changeThickness(16)"></div>
+        </div>
+    </div>
+</body>
+</html>
